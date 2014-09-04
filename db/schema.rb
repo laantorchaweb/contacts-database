@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904031822) do
+ActiveRecord::Schema.define(version: 20140904154043) do
 
   create_table "capabilities", force: true do |t|
     t.string   "name"
@@ -20,10 +20,13 @@ ActiveRecord::Schema.define(version: 20140904031822) do
   end
 
   create_table "categories", force: true do |t|
+    t.integer  "vendor_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categories", ["vendor_id"], name: "index_categories_on_vendor_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -48,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140904031822) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vendor_id"
   end
 
 end
