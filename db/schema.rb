@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904154043) do
+ActiveRecord::Schema.define(version: 20140905020649) do
 
   create_table "capabilities", force: true do |t|
+    t.integer  "vendor_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "capabilities", ["vendor_id"], name: "index_capabilities_on_vendor_id"
 
   create_table "categories", force: true do |t|
     t.integer  "vendor_id"

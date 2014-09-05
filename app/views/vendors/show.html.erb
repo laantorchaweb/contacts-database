@@ -9,8 +9,13 @@
   <strong>Url:</strong>
   <%= @vendor.url %>
 </p>
-<%= @vendor.categories.each do |cat| %>
-   <%= cat.name  %>
+<% @vendor.categories.each do |category| %>
+    <%= category.name %>
 <% end  %>
+<br>
+<% @vendor.capabilities.each do |capability| %>
+    <%= capability.name %>
+<% end  %>
+<br>
 <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
 <%= link_to 'Back', vendors_path %>
