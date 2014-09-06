@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   resources :capabilities
-
   resources :categories
-
   resources :vendors
 
   devise_for :users
-  root 'pages#home'
+  root 'vendors#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,21 +1,24 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @vendor.name %>
-</p>
+<div class="col-md-9">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @vendor.url %>
-</p>
-<% @vendor.categories.each do |category| %>
-    <%= category.name %>
-<% end  %>
-<br>
-<% @vendor.capabilities.each do |capability| %>
-    <%= capability.name %>
-<% end  %>
-<br>
-<%= link_to 'Edit', edit_vendor_path(@vendor) %> |
-<%= link_to 'Back', vendors_path %>
+    <p>
+      <strong>Name:</strong>
+      <%= @vendor.name %>
+    </p>
+
+    <p>
+      <strong>Url:</strong>
+      <%= @vendor.url %>
+    </p>
+    <% @vendor.categories.each do |category| %>
+        <%= category.name %>
+    <% end  %>
+    <br>
+    <% @vendor.capabilities.each do |capability| %>
+        <%= capability.name %>
+    <% end  %>
+    <br>
+    <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
+    <%= link_to 'Back', vendors_path %>
+</div>

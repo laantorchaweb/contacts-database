@@ -1,0 +1,40 @@
+<div class="col-md-3">
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+              Categories
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <ul>
+            <% Category.all.each do |cat| %>
+                <li><%= cat.name %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+              Capabilities
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul>
+            <% Capability.all.each do |cat| %>
+                <li><%= cat.name %></li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

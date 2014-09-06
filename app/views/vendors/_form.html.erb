@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <%= f.collection_select :category_ids, Category.all, :id, :name, :prompt => "Category", :multiple => true %>
-  <%= f.collection_select :capability_ids, Capability.all, :id, :name, :prompt => "Capability", :multiple => true %>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <%= f.collection_check_boxes :capability_ids, Capability.all, :id, :name, :prompt => "Capability", :multiple => true %>
 
   <div class="field">
     <%= f.label :name %><br>

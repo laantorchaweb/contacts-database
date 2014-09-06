@@ -1,17 +1,27 @@
-<h2>Log in</h2>
+<div class="col-sm-6 col-md-4 col-md-offset-4">
+    <h1 class="text-center login-title">Sign in to continue to Contacts Database</h1>
+    <div class="account-wall">
+        <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+            alt="">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: "form-signin"}) do |f| %>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+        <%= f.email_field :email, :autofocus => true, class: "form-control" %>
+        <%= f.password_field :password, class: "form-control" %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+        <%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
+        <% if devise_mapping.rememberable? -%>
+            <label class="checkbox pull-left">
+              <input type="checkbox">
+              Remember Me
+            </label>
+        <% end -%>
 
-  <div><%= f.submit "Log in" %></div>
-<% end %>
+        <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
 
-<%= render "devise/shared/links" %>
+        <% end %>
+    </div>
+    <div class="text-center new-account">
+      <%= render "devise/shared/links" %>
+    </div>
+</div>

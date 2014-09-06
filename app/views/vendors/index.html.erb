@@ -1,33 +1,84 @@
-<h1>Listing vendors</h1>
+<%= render 'layouts/sidebar' %>
+<div class="col-md-9">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Url</th>
-      <th>Categories</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
+<% @vendors.each do |vendor| %>
 
-  <tbody>
-    <% @vendors.each do |vendor| %>
-      <tr>
-        <td><%= vendor.name %></td>
-        <td><%= vendor.url %></td>
-        <td>
-          <% vendor.categories.each do |category| %>
-           <%= category.name %>
-          <% end  %>
-        </td>
-        <td><%= link_to 'Show', vendor %></td>
-        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
-        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+     <div class="well profile">
+          <div class="col-sm-12">
+              <div class="col-xs-12 col-sm-8">
+                  <h2><%= link_to vendor.name, vendor %></h2>
+                  <p><strong>Website: </strong> <%= link_to vendor.url, vendor.url %> </p>
+                  <p><strong>Categories: </strong>
+                  <% vendor.categories.each do |category| %>
+                      <span class="tags"><%= category.name %></span>
+                    <% end  %>
+                    </p>
+                  <p><strong>Skills: </strong>
+                    <% vendor.capabilities.each do |capability| %>
+                      <span class="tags"><%= capability.name %></span>
+                    <% end  %>
+                  </p>
+              </div>
+              <div class="col-xs-12 col-sm-4 text-center">
+                  <figure>
+                      <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
+                      <figcaption class="ratings">
+                          <p>Ratings
+                          <a href="#">
+                              <span class="fa fa-star"></span>
+                          </a>
+                          <a href="#">
+                              <span class="fa fa-star"></span>
+                          </a>
+                          <a href="#">
+                              <span class="fa fa-star"></span>
+                          </a>
+                          <a href="#">
+                              <span class="fa fa-star"></span>
+                          </a>
+                          <a href="#">
+                               <span class="fa fa-star-o"></span>
+                          </a>
+                          </p>
+                      </figcaption>
+                  </figure>
+              </div>
+          </div>
+          <div class="col-xs-12 divider text-center">
+              <div class="col-xs-12 col-sm-4 emphasis">
+                  <%= link_to edit_vendor_path(vendor), class:"btn btn-success btn-block" do %>
+                    <span class="fa fa-plus-circle"></span> Edit
+                  <% end %>
+              </div>
+              <div class="col-xs-12 col-sm-4 emphasis">
+                  <%= link_to vendor, class:"btn btn-info btn-block" do %>
+                    <span class="fa fa-user"></span> View Profile
+                  <% end %>
+              </div>
+              <div class="col-xs-12 col-sm-4 emphasis">
+                  <div class="btn-group dropup btn-block">
+                    <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Options </button>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu text-left" role="menu">
+                      <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
+                      <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
+                      <li class="divider"></li>
+                      <li>
+                      <%= link_to vendor, method: :delete, data: { confirm: 'Are you sure?' }  do %>
+                        <span class="fa fa-warning pull-right"></span> Delete Contact
+                      <% end %>
+                      </li>
 
-<br>
+                      <li class="divider"></li>
+                      <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
+                    </ul>
+                  </div>
+              </div>
+          </div>
+     </div>
 
-<%= link_to 'New Vendor', new_vendor_path %>
+<% end %>
+</div>

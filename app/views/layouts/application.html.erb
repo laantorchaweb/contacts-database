@@ -2,17 +2,29 @@
 <html>
 <head>
   <title>Vendor Database</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<%= render 'layouts/header' %>
 
-    <%= yield %>
+<div class="container">
+
+    <% if flash[:notice] %>
+        <div class="alert alert-info" role="alert"><%= notice %></div>
+    <% end %>
+
+    <% if flash[:alert] %>
+        <div class="alert alert-warning" role="alert"><%= alert %></div>
+    <% end %>
+
+    <div class="row">
+      <%= yield %>
+    </div>
+
 </div>
 
 </body>

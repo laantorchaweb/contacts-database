@@ -70,6 +70,6 @@ class CapabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def capability_params
-      params.require(:capability).permit(:name)
+      params.require(:capability).permit(:name, :vendor_ids)
     end
 end
