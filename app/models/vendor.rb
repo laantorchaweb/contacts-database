@@ -1,5 +1,5 @@
 class Vendor < ActiveRecord::Base
-    has_many :categories
-    has_many :capabilities
+    has_and_belongs_to_many :categories
+    has_and_belongs_to_many :capabilities
     # has_many :capabilities
 end

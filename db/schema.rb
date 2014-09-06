@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905020649) do
+ActiveRecord::Schema.define(version: 20140906010804) do
 
   create_table "capabilities", force: true do |t|
     t.integer  "vendor_id"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20140905020649) do
 
   add_index "capabilities", ["vendor_id"], name: "index_capabilities_on_vendor_id"
 
+  create_table "capabilities_vendors", id: false, force: true do |t|
+    t.integer "capability_id"
+    t.integer "vendor_id"
+  end
+
   create_table "categories", force: true do |t|
     t.integer  "vendor_id"
     t.string   "name"
@@ -30,6 +35,11 @@ ActiveRecord::Schema.define(version: 20140905020649) do
   end
 
   add_index "categories", ["vendor_id"], name: "index_categories_on_vendor_id"
+
+  create_table "categories_vendors", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "vendor_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -50,11 +60,16 @@ ActiveRecord::Schema.define(version: 20140905020649) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vendors", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "capability_id"
     t.string   "name"
     t.string   "url"
+    t.integer  "vendor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "vendor_id"
   end
+
+  add_index "vendors", ["capability_id"], name: "index_vendors_on_capability_id"
+  add_index "vendors", ["category_id"], name: "index_vendors_on_category_id"
 
 end
