@@ -1,25 +1,23 @@
-<h1>Listing capabilities</h1>
+<div class="page-header">
+  <h1>Listing Capabilities <small><%= link_to '(New Capability)', new_capability_path %></small></h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @capabilities.each do |capability| %>
-      <tr>
-        <td><%= capability.name %></td>
-        <td><%= link_to 'Show', capability %></td>
-        <td><%= link_to 'Edit', edit_capability_path(capability) %></td>
-        <td><%= link_to 'Destroy', capability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <ul class="list-group">
+      <li class="list-group-item">
+          <span class="pull-right">
+          <%= link_to capability, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </span>
+          <span class="pull-right">
+          <%= link_to edit_capability_path(capability) do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          </span>
+          <%= capability.name %>
+        </li>
+      </ul>
     <% end %>
-  </tbody>
-</table>
 
 <br>
-
-<%= link_to 'New Capability', new_capability_path %>

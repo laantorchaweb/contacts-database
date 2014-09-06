@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @capability.name %>
-</p>
-
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    <%= @capability.name %>
+  </li>
+</ul>
 <%= link_to 'Edit', edit_capability_path(@capability) %> |
 <%= link_to 'Back', capabilities_path %>
