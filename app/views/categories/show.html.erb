@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge">14</span>
+    <%= @category.name %>
+  </li>
+</ul>
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>
