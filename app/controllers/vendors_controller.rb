@@ -5,7 +5,8 @@ class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.json
   def index
-    @vendors = Vendor.all
+    # @vendors = Vendor.all
+    @vendors = Vendor.search(params[:search])
   end
 
   # GET /vendors/1

@@ -1,5 +1,13 @@
 <%= render 'layouts/sidebar' %>
 <div class="col-md-9">
+
+<%= form_tag vendors_path, :method => 'get', class: "navbar-form navbar-left" do %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search" %>
+  </div>
+  <%= submit_tag "Search", :name => nil, class: "btn btn-default" %>
+<% end %>
+
 <% @vendors.each do |vendor| %>
 
      <div class="well profile">
