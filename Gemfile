@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.1'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
     gem 'sqlite3'
@@ -11,6 +12,7 @@ group :production do
 end
 
 gem 'devise'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
