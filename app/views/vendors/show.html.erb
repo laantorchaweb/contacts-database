@@ -1,23 +1,86 @@
 
-<div class="col-md-9">
+<div class="col-md-9 col-md-push-2">
     <p id="notice"><%= notice %></p>
 
-    <p>
-      <strong>Name:</strong>
-      <%= @vendor.name %>
-    </p>
+    <div class="well profile">
+        <div class="col-sm-12">
+            <div class="col-xs-12 col-sm-8">
+                <h2><%= link_to @vendor.name, @vendor %></h2>
+                <p><strong>Website: </strong> <%= link_to @vendor.url, @vendor.url %> </p>
+                <p><strong>Categories: </strong>
+                <% @vendor.categories.each do |category| %>
+                    <span class="tags"><%= category.name %></span>
+                  <% end  %>
+                  </p>
+                <p><strong>Skills: </strong>
+                  <% @vendor.capabilities.each do |capability| %>
+                    <span class="tags"><%= capability.name %></span>
+                  <% end  %>
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 text-center">
+                <figure>
 
-    <p>
-      <strong>Url:</strong>
-      <%= @vendor.url %>
-    </p>
-    <% @vendor.categories.each do |category| %>
-        <%= category.name %>
-    <% end  %>
-    <br>
-    <% @vendor.capabilities.each do |capability| %>
-        <%= capability.name %>
-    <% end  %>
+                  <%= image_tag @vendor.image.url, class: "img-circle img-responsive vendor-img" %>
+
+                    <figcaption class="ratings">
+                        <p>Ratings
+                        <a href="#">
+                            <span class="fa fa-star"></span>
+                        </a>
+                        <a href="#">
+                            <span class="fa fa-star"></span>
+                        </a>
+                        <a href="#">
+                            <span class="fa fa-star"></span>
+                        </a>
+                        <a href="#">
+                            <span class="fa fa-star"></span>
+                        </a>
+                        <a href="#">
+                             <span class="fa fa-star-o"></span>
+                        </a>
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="col-xs-12 divider text-center">
+            <div class="col-xs-12 col-sm-4 emphasis">
+                <%= link_to edit_vendor_path(@vendor), class:"btn btn-success btn-block" do %>
+                  <span class="fa fa-plus-circle"></span> Edit
+                <% end %>
+            </div>
+            <div class="col-xs-12 col-sm-4 emphasis">
+                <%= link_to @vendor, class:"btn btn-info btn-block" do %>
+                  <span class="fa fa-user"></span> View Profile
+                <% end %>
+            </div>
+            <div class="col-xs-12 col-sm-4 emphasis">
+                <div class="btn-group dropup btn-block">
+                  <button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Options </button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu text-left" role="menu">
+                    <li><a href="#"><span class="fa fa-envelope pull-right"></span> Send an email </a></li>
+                    <li><a href="#"><span class="fa fa-list pull-right"></span> Add or remove from a list  </a></li>
+                    <li class="divider"></li>
+                    <li>
+                    <%= link_to @vendor, method: :delete, data: { confirm: 'Are you sure?' }  do %>
+                      <span class="fa fa-warning pull-right"></span> Delete Contact
+                    <% end %>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li><a href="#" class="btn disabled" role="button"> Unfollow </a></li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <br>
     <%= link_to 'Edit', edit_vendor_path(@vendor) %> |
     <%= link_to 'Back', vendors_path %>

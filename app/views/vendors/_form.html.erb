@@ -12,20 +12,22 @@
   <% end %>
 
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <br>
   <%= f.collection_check_boxes :capability_ids, Capability.all, :id, :name, :prompt => "Capability", :multiple => true %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: "form-control" %>
   </div>
-
+  <br>
   <%= f.file_field :image %>
-
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>
+  <br>
 <% end %>

@@ -10,9 +10,12 @@
         </div>
         <div id="collapseOne" class="panel-collapse collapse in">
           <div class="panel-body">
-            <ul>
+            <ul class="list-unstyled">
             <% Category.all.each do |cat| %>
-                <li><%= cat.name %></li>
+                <li>
+                  <%= check_box_tag(cat.name, cat.id) %>
+                  <%= cat.name -%>
+                </li>
             <% end %>
             </ul>
           </div>
@@ -28,9 +31,12 @@
         </div>
         <div id="collapseTwo" class="panel-collapse collapse">
           <div class="panel-body">
-            <ul>
-            <% Capability.all.each do |cat| %>
-                <li><%= cat.name %></li>
+            <ul class="list-unstyled">
+            <% Capability.all.each do |cap| %>
+                <li>
+                  <%= check_box_tag(cap.name, cap.id) %>
+                  <%= cap.name -%>
+                </li>
             <% end %>
             </ul>
           </div>

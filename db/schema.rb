@@ -60,15 +60,20 @@ ActiveRecord::Schema.define(version: 20140907235525) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vendors", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "capability_id"
     t.string   "name"
     t.string   "url"
+    t.integer  "vendor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "vendor_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  add_index "vendors", ["capability_id"], name: "index_vendors_on_capability_id"
+  add_index "vendors", ["category_id"], name: "index_vendors_on_category_id"
 
 end
